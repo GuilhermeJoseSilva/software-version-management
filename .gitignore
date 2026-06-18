@@ -1,0 +1,14 @@
+# Build outputs
+bin/
+obj/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+
+# Arquivos de ambiente sensíveis (se um dia tiver)
+*.env
+
+# Logs
+*.log
