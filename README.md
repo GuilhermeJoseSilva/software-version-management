@@ -61,11 +61,19 @@ Domain/         → entidades puras, sem dependência de EF Core ou ASP.NET
 Migrations/     → histórico de schema do banco
 ```
 
-Essa separação foi escolhida pra manter baixo acoplamento entre as camadas: o Domain não sabe como é salvo no banco, o Service não sabe como o dado chega via HTTP, e o Repository é a única camada que conversa diretamente com o EF Core. Isso facilita trocar qualquer peça (banco, framework de API) sem precisar reescrever o resto.
+Essa separação foi escolhida pra manter baixo acoplamento entre as camadas: o Domain não sabe como é salvo no banco, o Service não sabe como o dado chega via HTTP, e o Repository é a única camada que conversa diretamente com o EF Core. Essa separação reduz o acoplamento entre as camadas e facilita a manutenção, evolução e testes da aplicação.
 
 ## Por que só EF Core
 
  Neste projeto, optei por usar apenas EF Core: o cenário é um CRUD simples, sem volume de dados e sem consultas complexas que justifiquem uma camada de leitura otimizada separada. Dapper resolve um problema de performance em leitura que não existe nesse escopo, então usá-lo aqui seria adicionar uma tecnologia sem necessidade real, em vez de resolver um problema concreto.
+
+ ## Decisões Técnicas
+
+## DTOs
+
+Os DTOs foram utilizados para desacoplar o contrato da API das entidades de domínio e evitar expor diretamente as entidades persistidas pelo EF Core.
+
+Isso permite evoluir a estrutura interna das entidades sem impactar consumidores da API e possibilita controlar explicitamente quais dados entram e saem da aplicação.
 
 ## Docker
 
