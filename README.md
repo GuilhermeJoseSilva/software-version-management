@@ -45,7 +45,7 @@ Versao
 └── Depreciado
 ```
 
-O campo `Depreciado` é informado manualmente em cada versão, sem nenhuma regra automática — o enunciado não pede esse comportamento, então cada versão pode ser marcada como depreciada ou não, de forma independente das demais.
+O campo `Depreciado` é informado manualmente em cada versão, sem nenhuma regra automática, o enunciado não pede esse comportamento, então cada versão pode ser marcada como depreciada ou não, de forma independente das demais.
 
 A exclusão de um Software é física e em cascata: excluir um Software remove também todas as suas versões vinculadas.
 
