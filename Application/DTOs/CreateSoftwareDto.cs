@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace SoftwareManagement.DTOs;
+namespace SoftwareManagement.Application.DTOs;
 
 public record CreateSoftwareDto(
     [Required][MaxLength(150)] string Nome,

@@ -1,6 +1,58 @@
-@SoftwareManagement_HostAddress = http://localhost:5247
+@SoftwareManagement_HostAddress = http://localhost:8080
 
-GET {{SoftwareManagement_HostAddress}}/weatherforecast/
-Accept: application/json
+### Cadastrar Software
+POST {{SoftwareManagement_HostAddress}}/api/software
+Content-Type: application/json
 
-###
+{
+  "nome": "Sistema B",
+  "fornecedor": "Apple"
+}
+
+### Listar Softwares
+GET {{SoftwareManagement_HostAddress}}/api/software
+
+### Buscar Software por Id
+GET {{SoftwareManagement_HostAddress}}/api/software/1
+
+### Atualizar Software
+PUT {{SoftwareManagement_HostAddress}}/api/software/1
+Content-Type: application/json
+
+{
+  "nome": "Sistema B Atualizado",
+  "fornecedor": "apple"
+}
+
+### Excluir Software
+DELETE {{SoftwareManagement_HostAddress}}/api/software/1
+
+### Cadastrar Versão
+POST {{SoftwareManagement_HostAddress}}/api/versao
+Content-Type: application/json
+
+{
+  "softwareId": 2,
+  "descricao": "1.0.0",
+  "dataRelease": "2026-01-15T00:00:00",
+  "depreciado": false
+}
+
+### Buscar Versão por Id
+GET {{SoftwareManagement_HostAddress}}/api/versao/1
+
+### Listar Versões de um Software
+GET {{SoftwareManagement_HostAddress}}/api/versao/software/1
+
+### Atualizar Versão
+PUT {{SoftwareManagement_HostAddress}}/api/versao/1
+Content-Type: application/json
+
+{
+  "descricao": "1.0.1",
+  "dataRelease": "2026-02-01T00:00:00",
+  "depreciado": true
+}
+
+### Excluir Versão
+DELETE {{SoftwareManagement_HostAddress}}/api/versao/1

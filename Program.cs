@@ -1,11 +1,20 @@
 using Microsoft.EntityFrameworkCore;
+using SoftwareManagement.Application.Interfaces;
+using SoftwareManagement.Application.Services;
 using SoftwareManagement.Data;
+using SoftwareManagement.Data.Interfaces;
+using SoftwareManagement.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddScoped<ISoftwareRepository, SoftwareRepository>();
+builder.Services.AddScoped<IVersaoRepository, VersaoRepository>();
+builder.Services.AddScoped<ISoftwareService, SoftwareService>();
+builder.Services.AddScoped<IVersaoService, VersaoService>();
+builder.Services.AddControllers();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -27,6 +36,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapControllers();
 
 
 

@@ -12,14 +12,14 @@ public class Versao
     {
         SoftwareId = softwareId;
         Descricao = descricao;
-        DataRelease = dataRelease;
+        DataRelease = DateTime.SpecifyKind(dataRelease, DateTimeKind.Utc);
         Depreciado = depreciado;
     }
 
     public void AtualizarDados(string descricao, DateTime dataRelease, bool depreciado)
     {
         Descricao = descricao;
-        DataRelease = dataRelease;
+        DataRelease = DateTime.SpecifyKind(dataRelease, DateTimeKind.Utc);
         Depreciado = depreciado;
     }
 }
